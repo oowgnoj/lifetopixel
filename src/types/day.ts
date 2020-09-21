@@ -7,11 +7,3 @@ export default interface IDay {
   score: number;
   jobs?: Array<number>;
 }
-
-export interface IDayForm {
-  goodThing: string;
-  badThing: string;
-  goalTomorrow: string;
-  mainActivity: string;
-  score: number;
-}

@@ -8,4 +8,8 @@ export default interface IQuestion {
 
 export enum IQuestionType {
   shortSentence = "shortSentence",
+  score = "score",
+  dateTime = "dateTime",
+  select = "select",
+  multiSelect = "multiSelect",
 }
