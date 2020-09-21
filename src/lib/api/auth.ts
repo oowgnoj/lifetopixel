@@ -1,9 +1,9 @@
 import axios from "axios";
-const server = "http://localhost:4500";
+import { DOMAIN_API } from "lib/common";
 
 export async function requestLogin(email: string, password: string) {
   const user = await axios.post(
-    `${server}/login`,
+    `${DOMAIN_API}/login`,
     { email, password },
     { withCredentials: true }
   );
@@ -24,7 +24,7 @@ export async function requestRegister(
   username: string
 ) {
   const res = await axios.post(
-    `${server}/register`,
+    `${DOMAIN_API}/register`,
     { email, password, username },
     { withCredentials: true }
   );
