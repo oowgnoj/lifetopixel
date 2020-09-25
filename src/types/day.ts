@@ -1,4 +1,5 @@
 export default interface IDay {
+  _id: string;
   userId?: string;
   goodThing: string;
   badThing: string;

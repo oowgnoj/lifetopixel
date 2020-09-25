@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState, useEffect } from "react";
+import React, { FunctionComponent } from "react";
 import Question from "views/components/molecules/question";
 
 type RecordProps = {

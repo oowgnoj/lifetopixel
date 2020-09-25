@@ -1,17 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { requestDay } from "../lib/api/day";
-import { requestJob } from "../lib/api/job";
-import { requestNote } from "../lib/api/note";
+import { useUserInfo } from "context/authContext";
+import { useHistory } from "react-router-dom";
+
+import { requestDay } from "lib/api/day";
+import { requestJob } from "lib/api/job";
+import { requestNote } from "lib/api/note";
+import { requestLogout } from "lib/api/auth";
+
 import IJob from "types/job";
-import IDay from "../types/day";
+import IDay from "types/day";
 import INote from "types/note";
 
-export default () => {
+export default (props: any) => {
+  const { userInfo, setUserInfo }: any = useUserInfo();
   const [days, setDays] = useState<IDay[]>([]);
   const [jobs, setJobs] = useState<IJob[]>([]);
   const [notes, setNotes] = useState<INote[]>([]);
+  const history = useHistory();
+
   useEffect(() => {
     async function getData() {
       const days = await requestDay();
@@ -23,28 +31,26 @@ export default () => {
     }
     getData();
   }, []);
+
+  const handleLogout = () => {
+    setUserInfo(null);
+    requestLogout();
+    history.push("/login");
+  };
+
+  if (!userInfo && !days && jobs && notes) {
+    return <div>waiting</div>;
+  }
+
   return (
     <>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/day">day</Link>
-          </li>
-          <li>
-            <Link to="/job">job</Link>
-          </li>
-          <li>
-            <Link to="/note">note</Link>
-          </li>
-        </ul>
-      </nav>
+      <button onClick={handleLogout}>logout</button>
+      <Link to="/">Home</Link>
+      <Link to="/day">day</Link>
+      <Link to="/job">job</Link>
+      <Link to="/note">note</Link>
       <Wrapper>
+        <div>{userInfo?.username}</div>
         <Body>
           <div>하루 목록</div>
           {days.map((el: IDay) => (

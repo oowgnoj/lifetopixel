@@ -1,7 +1,6 @@
 import axios from "axios";
 import IDay from "types/day";
 import { DOMAIN_API } from "lib/common";
-
 export async function requestDay() {
   const token = localStorage.getItem("token");
   const res = await axios.get(`${DOMAIN_API}/day`, {

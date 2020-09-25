@@ -7,4 +7,9 @@ export default interface IUser {
   fields: Array<string>;
   notes: Array<string>;
   jobs: Array<string>;
+  token: string;
+}
+export interface IUserResponse {
+  token: string;
+  user: IUser;
 }
