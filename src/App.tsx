@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "normalize.css";
 import { UserProvider } from "context/authContext";
 import PrivateRoute from "lib/privateRoute";
 import Index from "./views";
