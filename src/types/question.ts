@@ -12,4 +12,5 @@ export enum IQuestionType {
   dateTime = "dateTime",
   select = "select",
   multiSelect = "multiSelect",
+  longSentence = "longSentence",
 }
