@@ -11,7 +11,7 @@ const questions: IQuestion[] = [
   {
     index: 0,
     type: IQuestionType.shortSentence,
-    title: "무슨 작업인가요",
+    title: "어떤 일을 하셨나요?",
     field: "name",
     answer: "",
   },
@@ -33,7 +33,14 @@ const questions: IQuestion[] = [
     index: 3,
     type: IQuestionType.shortSentence,
     title: "시작시간?",
-    field: "끝시간",
+    field: "startTime",
+    answer: "",
+  },
+  {
+    index: 3,
+    type: IQuestionType.shortSentence,
+    title: "끝시간?",
+    field: "sendTime",
     answer: "",
   },
 ];
@@ -63,6 +70,13 @@ export default () => {
     <Wrapper>
       <Record type="job" questions={questions} handleChange={handleAnswer} />
       <button onClick={handleRequest}>제출</button>
+      <button
+        onClick={() => {
+          history.push("/");
+        }}
+      >
+        뒤로가기
+      </button>
     </Wrapper>
   );
 };

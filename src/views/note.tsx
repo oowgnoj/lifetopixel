@@ -24,7 +24,7 @@ const questions: IQuestion[] = [
   },
   {
     index: 2,
-    type: IQuestionType.shortSentence,
+    type: IQuestionType.longSentence,
     title: "detail?",
     field: "detail",
     answer: "",
@@ -33,6 +33,13 @@ const questions: IQuestion[] = [
     index: 3,
     type: IQuestionType.shortSentence,
     title: "tag[]",
+    field: "tag",
+    answer: "",
+  },
+  {
+    index: 3,
+    type: IQuestionType.shortSentence,
+    title: "urls[]",
     field: "tag",
     answer: "",
   },
@@ -63,6 +70,13 @@ export default () => {
     <Wrapper>
       <Record type="note" questions={questions} handleChange={handleAnswer} />
       <button onClick={handleRequest}>제출</button>
+      <button
+        onClick={() => {
+          history.push("/");
+        }}
+      >
+        뒤로가기
+      </button>
     </Wrapper>
   );
 };

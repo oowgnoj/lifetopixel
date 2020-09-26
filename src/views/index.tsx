@@ -43,42 +43,30 @@ export default (props: any) => {
   }
 
   return (
-    <>
+    <Wrapper>
       <button onClick={handleLogout}>logout</button>
       <Link to="/">Home</Link>
-      <Link to="/day">day</Link>
-      <Link to="/job">job</Link>
-      <Link to="/note">note</Link>
-      <Wrapper>
-        <div>{userInfo?.username}</div>
-        <Body>
-          <div>하루 목록</div>
-          {days.map((el: IDay) => (
-            <div>{el.mainActivity}</div>
-          ))}
-        </Body>
-        <Body>
-          <div>한 일 목록</div>
-          {jobs.map((el: IJob) => (
-            <div>{el.name}</div>
-          ))}
-        </Body>
-        <Body>
-          <div>노트 목록</div>
-          {notes.map((el: INote) => (
-            <div>{el.title}</div>
-          ))}
-        </Body>
-      </Wrapper>
-    </>
+      <Link to="/day">
+        <button>하루 작성하기</button>
+      </Link>
+      <Link to="/job">
+        <button>job</button>
+      </Link>
+      <Link to="/note">
+        <button>note</button>
+      </Link>
+    </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-  display: flex;
-`;
-
-const Body = styled.div`
+  position: absolute;
   display: flex;
   flex-direction: column;
+  padding: 30px;
+  width: 40vw;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 `;

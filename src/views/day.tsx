@@ -11,14 +11,14 @@ const questions: IQuestion[] = [
   {
     index: 0,
     type: IQuestionType.shortSentence,
-    title: "오늘 좋았나요",
+    title: "좋았던 점",
     field: "goodThing",
     answer: "",
   },
   {
     index: 1,
     type: IQuestionType.shortSentence,
-    title: "안좋았던 일은 무엇인가요?",
+    title: "안좋았던 점",
     field: "badThing",
     answer: "",
   },
@@ -39,7 +39,7 @@ const questions: IQuestion[] = [
   {
     index: 4,
     type: IQuestionType.shortSentence,
-    title: "오늘 점수는?",
+    title: "오늘 점수는? (1~10)",
     field: "score",
     answer: "",
   },
@@ -48,6 +48,7 @@ const questions: IQuestion[] = [
 export default () => {
   const [answers, setAnswer] = useState(questions);
   const history = useHistory();
+
   const handleAnswer = (index: number, text: string) => {
     const newAnswer = questions.map((el, i) => {
       if (i === index) {
@@ -60,16 +61,24 @@ export default () => {
   const handleRequest = async () => {
     const body: IDay = transformToRequstBody(answers);
     const result = await postDay(body);
+    console.log(result);
     if (result.hasError) {
-      alert(result.data);
+      alert(result.data.response.data);
     } else {
       history.push("/");
     }
   };
   return (
     <Wrapper>
+      {console.log(answers)}
       <Record type="day" questions={questions} handleChange={handleAnswer} />
-      <button onClick={handleRequest}>제출</button>
+      <button
+        onClick={() => {
+          history.push("/");
+        }}
+      >
+        뒤로가기
+      </button>
     </Wrapper>
   );
 };
