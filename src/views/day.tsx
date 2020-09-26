@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
+
+import Layout from "views/components/layout";
 import Record from "views/components/organisms/record";
 import { postDay } from "lib/api/day";
 import { transformToRequstBody } from "lib/common/helper";
@@ -65,30 +67,29 @@ export default () => {
     if (result.hasError) {
       alert(result.data.response.data);
     } else {
+      alert("성공적으로 제출되었습니다.");
       history.push("/");
     }
   };
   return (
-    <Wrapper>
-      {console.log(answers)}
-      <Record type="day" questions={questions} handleChange={handleAnswer} />
-      <button
-        onClick={() => {
-          history.push("/");
-        }}
-      >
-        뒤로가기
-      </button>
-    </Wrapper>
+    <Layout>
+      <Wrapper>
+        <Record type="day" questions={questions} handleChange={handleAnswer} />
+        <button
+          onClick={() => {
+            history.push("/");
+          }}
+        >
+          뒤로가기
+        </button>
+        <button onClick={handleRequest}>제출</button>
+      </Wrapper>
+    </Layout>
   );
 };
 
 const Wrapper = styled.div`
-  position: absolute;
-  width: 50vw;
-  padding: 10px;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
