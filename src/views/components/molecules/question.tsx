@@ -2,9 +2,7 @@ import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 import Title from "views/components/atoms/forms/title";
 import InputSentence from "views/components/atoms/forms/inputSentence";
-import InputSelect from "views/components/atoms/forms/inputSelect";
 import InputLongText from "views/components/atoms/forms/inputLongText";
-import InputMultiSelect from "views/components/atoms/forms/inputMultiSelect";
 
 import { IQuestionType } from "types/question";
 type QuestionProps = {
@@ -26,14 +24,9 @@ const Question: FunctionComponent<QuestionProps> = ({
       {type === IQuestionType.shortSentence && (
         <InputSentence index={index} handleChange={handleChange} />
       )}
-      {type === IQuestionType.select && (
-        <InputSelect index={index} handleChange={handleChange} />
-      )}
+
       {type === IQuestionType.longSentence && (
         <InputLongText index={index} handleChange={handleChange} />
-      )}
-      {type === IQuestionType.multiSelect && (
-        <InputMultiSelect index={index} handleChange={handleChange} />
       )}
     </Wrapper>
   );
