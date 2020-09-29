@@ -1,14 +1,9 @@
 import React, { useState, useEffect, createContext, useContext } from "react";
 import { getMe } from "lib/api/auth";
-import IUser from "types/user";
 
-type userInfo = {
-  username: string;
-  email: string;
-};
 export const UserContext = createContext({});
-export const UserProvider = ({ children }: any) => {
-  const [userInfo, setUserInfo] = useState<userInfo | null>(null);
+export const UserProvider = ({ children }) => {
+  const [userInfo, setUserInfo] = useState(null);
   useEffect(() => {
     handleGetMe();
   }, []);
@@ -17,7 +12,7 @@ export const UserProvider = ({ children }: any) => {
     const { email, username } = await getMe();
     setUserInfo({ email, username });
   };
-  const changeUserInfo = (values: IUser) => {
+  const changeUserInfo = (values) => {
     setUserInfo(values);
   };
 
@@ -30,6 +25,6 @@ export const UserProvider = ({ children }: any) => {
   );
 };
 
-export function useUserInfo<IUser>() {
+export function useUserInfo() {
   return useContext(UserContext);
 }

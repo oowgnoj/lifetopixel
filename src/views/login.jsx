@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { useUserInfo } from "context/authContext";
 import { requestLogin } from "../lib/api/auth";
 
-export default () => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setUserInfo }: any = useUserInfo();
+  const { userInfo, setUserInfo } = useUserInfo();
   const history = useHistory();
+
+  useEffect(() => {
+    if (userInfo) {
+      history.push("/");
+    }
+  }, [userInfo]);
+
   const handleRequest = async () => {
     const user = await requestLogin(email, password);
     if (user) {
@@ -54,3 +61,5 @@ const Title = styled.div`
   align-self: center;
   font-size: 30px;
 `;
+
+export default Login;
