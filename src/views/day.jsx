@@ -6,52 +6,50 @@ import Layout from "views/components/layout";
 import Record from "views/components/organisms/record";
 import { postDay } from "lib/api/day";
 import { transformToRequstBody } from "lib/common/helper";
-import IQuestion, { IQuestionType } from "types/question";
-import IDay from "types/day";
 
-const questions: IQuestion[] = [
+const questions = [
   {
     index: 0,
-    type: IQuestionType.shortSentence,
+    type: "shortSentence",
     title: "좋았던 점",
     field: "goodThing",
     answer: "",
   },
   {
     index: 1,
-    type: IQuestionType.shortSentence,
+    type: "shortSentence",
     title: "안좋았던 점",
     field: "badThing",
     answer: "",
   },
   {
     index: 2,
-    type: IQuestionType.shortSentence,
+    type: "shortSentence",
     title: "내일 목표는 무엇인가요?",
     field: "goalTomorrow",
     answer: "",
   },
   {
     index: 3,
-    type: IQuestionType.shortSentence,
+    type: "shortSentence",
     title: "오늘의 주요 활동은?",
     field: "mainActivity",
     answer: "",
   },
   {
     index: 4,
-    type: IQuestionType.shortSentence,
+    type: "shortSentence",
     title: "오늘 점수는? (1~10)",
     field: "score",
     answer: "",
   },
 ];
 
-export default () => {
+const WriteDay = () => {
   const [answers, setAnswer] = useState(questions);
   const history = useHistory();
 
-  const handleAnswer = (index: number, text: string) => {
+  const handleAnswer = (index, text) => {
     const newAnswer = questions.map((el, i) => {
       if (i === index) {
         el.answer = text;
@@ -61,9 +59,8 @@ export default () => {
     setAnswer(newAnswer);
   };
   const handleRequest = async () => {
-    const body: IDay = transformToRequstBody(answers);
+    const body = transformToRequstBody(answers);
     const result = await postDay(body);
-    console.log(result);
     if (result.hasError) {
       alert(result.data.response.data);
     } else {
@@ -93,3 +90,5 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
 `;
+
+export default WriteDay;

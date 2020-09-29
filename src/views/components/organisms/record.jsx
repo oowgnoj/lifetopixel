@@ -1,16 +1,8 @@
-import React, { FunctionComponent } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import Question from "views/components/molecules/question";
 
-type RecordProps = {
-  type: string;
-  questions: { title: string; type: string; index: number }[];
-  handleChange: (index: number, text: string) => void;
-};
-const Record: FunctionComponent<RecordProps> = ({
-  type,
-  questions,
-  handleChange,
-}) => {
+const Record = ({ type, questions, handleChange }) => {
   return (
     <>
       <div>Records</div>
@@ -28,3 +20,7 @@ const Record: FunctionComponent<RecordProps> = ({
 };
 
 export default Record;
+
+Record.propTypes = {
+  type: PropTypes.oneOf(["shortSentence", "longSentence"]),
+};

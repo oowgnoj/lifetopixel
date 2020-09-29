@@ -1,19 +1,17 @@
 import axios from "axios";
-import IJob from "types/job";
 import { DOMAIN_API } from "lib/common";
-
-export async function requestJob() {
+export async function requestDay() {
   const token = localStorage.getItem("token");
-  const res = await axios.get(`${DOMAIN_API}/job`, {
+  const res = await axios.get(`${DOMAIN_API}/day`, {
     headers: { "x-access-token": token },
   });
   return res.data;
 }
 
-export async function postJob(body: IJob) {
+export async function postDay(body) {
   try {
     const token = localStorage.getItem("token");
-    const res = await axios.post(`${DOMAIN_API}/job`, body, {
+    const res = await axios.post(`${DOMAIN_API}/day`, body, {
       headers: { "x-access-token": token },
     });
     if (res.data && res.data.hasError) {

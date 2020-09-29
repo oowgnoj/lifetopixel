@@ -1,18 +1,18 @@
 import axios from "axios";
-import IDay from "types/day";
 import { DOMAIN_API } from "lib/common";
-export async function requestDay() {
+
+export async function requestNote() {
   const token = localStorage.getItem("token");
-  const res = await axios.get(`${DOMAIN_API}/day`, {
+  const res = await axios.get(`${DOMAIN_API}/note`, {
     headers: { "x-access-token": token },
   });
   return res.data;
 }
 
-export async function postDay(body: IDay) {
+export async function postNote(body) {
   try {
     const token = localStorage.getItem("token");
-    const res = await axios.post(`${DOMAIN_API}/day`, body, {
+    const res = await axios.post(`${DOMAIN_API}/note`, body, {
       headers: { "x-access-token": token },
     });
     if (res.data && res.data.hasError) {

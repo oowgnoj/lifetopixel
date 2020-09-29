@@ -9,16 +9,12 @@ import { requestDay } from "lib/api/day";
 import { requestJob } from "lib/api/job";
 import { requestNote } from "lib/api/note";
 
-import IJob from "types/job";
-import IDay from "types/day";
-import INote from "types/note";
+const Index = (props) => {
+  const { userInfo, setUserInfo } = useUserInfo();
 
-export default (props: any) => {
-  const { userInfo, setUserInfo }: any = useUserInfo();
-
-  const [days, setDays] = useState<IDay[]>([]);
-  const [jobs, setJobs] = useState<IJob[]>([]);
-  const [notes, setNotes] = useState<INote[]>([]);
+  const [days, setDays] = useState([]);
+  const [jobs, setJobs] = useState([]);
+  const [notes, setNotes] = useState([]);
   const history = useHistory();
 
   useEffect(() => {
@@ -52,3 +48,5 @@ const Wrapper = styled.div``;
 const ButtonImage = styled.img`
   width: 100%;
 `;
+
+export default Index;
