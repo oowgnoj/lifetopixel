@@ -53,10 +53,8 @@ const WriteDay = () => {
   const history = useHistory();
 
   const handleAnswer = (index, text) => {
-    console.log("index is", index, "text is ", text);
     const newAnswer = questions.map((el, i) => {
       if (i === index) {
-        console.log("here");
         el.answer = text;
       }
       return el;
@@ -75,8 +73,6 @@ const WriteDay = () => {
   };
 
   const handleNext = () => {
-    console.log(step);
-    console.log(questions.length);
     if (step === questions.length - 1) {
       handleRequest();
     } else {

@@ -38,7 +38,7 @@ export default Question;
 Question.propTypes = {
   title: PropTypes.number,
   index: PropTypes.string,
-  type: PropTypes.oneOf(["shortSentence", "longSentence"]),
+  type: PropTypes.oneOf(ㅎ[("shortSentence", "longSentence")]),
 };
 
 const Wrapper = styled.div`
