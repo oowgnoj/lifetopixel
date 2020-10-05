@@ -32,7 +32,7 @@ const Login = () => {
         <span>email</span>
         <input onChange={(e) => setEmail(e.target.value)} />
         <span>패스워드</span>
-        <input onChange={(e) => setPassword(e.target.value)} />
+        <input type="password" onChange={(e) => setPassword(e.target.value)} />
         <button onClick={handleRequest}>확인</button>
       </InputWrapper>
     </Wrapper>
