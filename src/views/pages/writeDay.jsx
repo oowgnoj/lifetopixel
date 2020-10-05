@@ -12,7 +12,7 @@ import { transformToRequstBody } from "lib/common/helper";
 const questions = [
   {
     index: 0,
-    type: "starRating",
+    type: "shortSentence",
     title: "좋았던 점",
     field: "goodThing",
     answer: "",
@@ -93,7 +93,6 @@ const WriteDay = () => {
 
   return (
     <Layout>
-      {console.log(answers)}
       <Record
         index={step}
         handleText={handleAnswer}

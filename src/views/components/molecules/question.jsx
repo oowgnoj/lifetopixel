@@ -11,6 +11,7 @@ const Question = ({ index, question, handleChange }) => {
   return (
     <Wrapper>
       <Title index={index} title={title} />
+
       {type === "shortSentence" && (
         <InputSentence
           index={index}
