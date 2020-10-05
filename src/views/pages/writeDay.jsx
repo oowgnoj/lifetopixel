@@ -41,7 +41,7 @@ const questions = [
   {
     index: 4,
     type: "starRating",
-    title: "오늘 점수는? (1~10)",
+    title: "오늘의 점수는?",
     field: "score",
     answer: "",
   },

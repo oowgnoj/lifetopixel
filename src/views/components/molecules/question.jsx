@@ -44,5 +44,5 @@ Question.propTypes = {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  height: 20vh;
+  min-height: 30vh;
 `;

@@ -22,10 +22,25 @@ ShortSentence.propTypes = {
 };
 
 const TextBox = styled.textarea`
-  min-height: 80px;
-  color: black;
-  font-weight: normal;
-  background: white;
-  border: 0;
-  box-shadow: inset 0 0 3px #8c6746;
+  resize: none !important;
+  overflow: auto !important;
+  outline: none;
+  box-shadow: none !important;
+  border-color: #fff !important;
+  &:hover {
+    resize: none !important;
+    overflow: auto !important;
+    outline: none;
+    box-shadow: none !important;
+    border-color: #fff !important;
+  }
+  width: 100%;
+  height: 10em;
+  line-height: 31px;
+  background-image: -webkit-linear-gradient(left, white 0, transparent 0),
+    -webkit-linear-gradient(right, white 0, transparent 0),
+    -webkit-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+  background-repeat: repeat-y;
+  background-size: 100% 100%, 100% 100%, 100% 31px;
+  background-attachment: local;
 `;
