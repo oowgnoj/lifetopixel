@@ -25,8 +25,5 @@ const Index = (props) => {
 };
 
 const Wrapper = styled.div``;
-const ButtonImage = styled.img`
-  width: 100%;
-`;
 
 export default Index;

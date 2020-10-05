@@ -22,7 +22,9 @@ const LayoutComponent = ({ children }) => {
       <>
         <Heading>
           {userInfo.username}
-          <button onClick={handleLogout}>logout</button>
+          <div style={{ color: "grey" }} onClick={handleLogout}>
+            logout
+          </div>
         </Heading>
       </>
       <Body>{children}</Body>
@@ -44,11 +46,12 @@ const Heading = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 0 20vw;
+  height: 3vh;
 `;
 
 const Body = styled.div`
   margin: 0 20vw;
-  height: 100%;
+  height: 97vh;
   @media (max-width: "780px") {
     padding: 8px 0 ${(props) => (props.isShowCategoriesMore ? "0" : "9px")};
   }
