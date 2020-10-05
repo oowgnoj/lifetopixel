@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { useUserInfo } from "context/authContext";
-import { requestLogin } from "../lib/api/auth";
+import { requestLogin } from "../../lib/api/auth";
 
 const Login = () => {
   const [email, setEmail] = useState("");

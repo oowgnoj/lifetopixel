@@ -2,15 +2,17 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 
-import Layout from "views/components/layout";
+import Layout from "views/components/layout/default";
 import Record from "views/components/organisms/record";
+import TypingAnimation from "views/components/molecules/typingAnimation";
+
 import { postDay } from "lib/api/day";
 import { transformToRequstBody } from "lib/common/helper";
 
 const questions = [
   {
     index: 0,
-    type: "shortSentence",
+    type: "starRating",
     title: "좋았던 점",
     field: "goodThing",
     answer: "",
@@ -38,7 +40,7 @@ const questions = [
   },
   {
     index: 4,
-    type: "shortSentence",
+    type: "starRating",
     title: "오늘 점수는? (1~10)",
     field: "score",
     answer: "",
@@ -47,11 +49,14 @@ const questions = [
 
 const WriteDay = () => {
   const [answers, setAnswer] = useState(questions);
+  const [step, setStep] = useState(0);
   const history = useHistory();
 
   const handleAnswer = (index, text) => {
+    console.log("index is", index, "text is ", text);
     const newAnswer = questions.map((el, i) => {
       if (i === index) {
+        console.log("here");
         el.answer = text;
       }
       return el;
@@ -68,27 +73,38 @@ const WriteDay = () => {
       history.push("/");
     }
   };
+
+  const handleNext = () => {
+    console.log(step);
+    console.log(questions.length);
+    if (step === questions.length - 1) {
+      handleRequest();
+    } else {
+      setStep((prev) => prev + 1);
+    }
+  };
+  const handlePrev = () => {
+    if (step === 0) {
+      history.push("/");
+    } else {
+      setStep((prev) => prev - 1);
+    }
+  };
+
   return (
     <Layout>
-      <Wrapper>
-        <Record type="day" questions={questions} handleChange={handleAnswer} />
-        <button
-          onClick={() => {
-            history.push("/");
-          }}
-        >
-          뒤로가기
-        </button>
-        <button onClick={handleRequest}>제출</button>
-      </Wrapper>
+      {console.log(answers)}
+      <Record
+        index={step}
+        handleText={handleAnswer}
+        handleNext={handleNext}
+        handlePrev={handlePrev}
+        question={questions[step]}
+      />
     </Layout>
   );
 };
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`;
+const Wrapper = styled.div``;
 
 export default WriteDay;

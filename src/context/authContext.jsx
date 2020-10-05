@@ -1,17 +1,23 @@
 import React, { useState, useEffect, createContext, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import { getMe } from "lib/api/auth";
 
 export const UserContext = createContext({});
 export const UserProvider = ({ children }) => {
   const [userInfo, setUserInfo] = useState(null);
+  const history = useHistory();
   useEffect(() => {
-    handleGetMe();
+    async function requestMe() {
+      const { email, username } = await getMe();
+      setUserInfo({ email, username });
+    }
+    try {
+      requestMe();
+    } catch {
+      history.push("/login");
+    }
   }, []);
 
-  const handleGetMe = async () => {
-    const { email, username } = await getMe();
-    setUserInfo({ email, username });
-  };
   const changeUserInfo = (values) => {
     setUserInfo(values);
   };

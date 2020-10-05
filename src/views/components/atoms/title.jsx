@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import GlobalStyle from "styles/globalstyle";
 
 const Question = ({ title }) => {
   return <Title>{title}</Title>;
@@ -12,7 +13,9 @@ Question.propTypes = {
   title: PropTypes.string,
 };
 
-const Title = styled.div`
-  margin: 10px;
-  width: 100%;
+const Title = styled.span`
+  font-size: 30px;
+  color: ${GlobalStyle.MAIN_COLOR};
+  padding-bottom: 3px;
+  margin-bottom: 21px;
 `;
