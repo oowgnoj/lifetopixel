@@ -35,7 +35,7 @@ const TextBox = styled.textarea`
     border-color: #fff !important;
   }
   width: 100%;
-  height: 10em;
+  height: 8em;
   line-height: 31px;
   background-image: -webkit-linear-gradient(left, white 0, transparent 0),
     -webkit-linear-gradient(right, white 0, transparent 0),
