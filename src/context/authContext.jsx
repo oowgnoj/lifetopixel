@@ -9,14 +9,11 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     async function requestMe() {
       const { email, username } = await getMe();
+      console.log(email, username);
       setUserInfo({ email, username });
     }
-    try {
-      requestMe();
-    } catch {
-      history.push("/login");
-    }
-  }, []);
+    requestMe();
+  }, [userInfo]);
 
   const changeUserInfo = (values) => {
     setUserInfo(values);
