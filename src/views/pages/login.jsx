@@ -1,28 +1,16 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
-import { useUserInfo } from "context/authContext";
 import { requestLogin } from "../../lib/api/auth";
 import { getMe } from "lib/api/auth";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { userInfo, setUserInfo } = useUserInfo();
   const history = useHistory();
-
-  useEffect(() => {
-    if (userInfo) {
-      history.push("/");
-    }
-  }, [userInfo]);
 
   const handleRequest = async () => {
     const isLoggedIn = await requestLogin(email, password);
-    if (isLoggedIn) {
-      await getMe()
-      history.push("/");
-    }
   };
 
   return (

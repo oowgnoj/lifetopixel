@@ -6,16 +6,15 @@ export async function getMe() {
   const res = await axios.get(`${DOMAIN_API}/me`, {
     headers: { "x-access-token": token },
   });
-  console.log('getMe',res);
   return res.data;
 }
 
 export async function requestLogin(email, password) {
-  const {data} = await axios.post(`${DOMAIN_API}/login`, {
+  const { data } = await axios.post(`${DOMAIN_API}/login`, {
     email,
     password,
   });
-  const {token} =data; 
+  const { token } = data;
   if (token) {
     localStorage.setItem("token", token);
     return true;

@@ -1,30 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { useUserInfo } from "context/authContext";
 import { useHistory } from "react-router-dom";
 import { requestLogout } from "lib/api/auth";
 
 const LayoutComponent = ({ children }) => {
-  const { userInfo, setUserInfo } = useUserInfo();
-  const history = useHistory();
-
-  const handleLogout = () => {
-    setUserInfo(null);
-    requestLogout();
-    history.push("/login");
-  };
-  if (!userInfo) {
-    return <></>;
-  }
   return (
     <Layout>
       <>
         <Heading>
-          {userInfo.username}
-          <div style={{ color: "grey" }} onClick={handleLogout}>
-            logout
-          </div>
+          {/* {userInfo.username} */}
+          {/* <div style={{ color: "grey" }} onClick={handleLogout}> */}
+          logout
+          {/* </div> */}
         </Heading>
       </>
       <Body>{children}</Body>
