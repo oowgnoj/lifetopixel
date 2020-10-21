@@ -6,13 +6,15 @@ export const UserContext = createContext({});
 export const UserProvider = ({ children }) => {
   const [userInfo, setUserInfo] = useState(null);
   const history = useHistory();
+  console.log('auth context')
   useEffect(() => {
+    console.log('auth context !!')
     async function requestMe() {
       const { email, username } = await getMe();
-      console.log(email, username);
-      setUserInfo({ email, username });
+      setUserInfo(prev => prev && prev.email !== email && { email, username });
     }
     requestMe();
+
   }, [userInfo]);
 
   const changeUserInfo = (values) => {
@@ -23,6 +25,7 @@ export const UserProvider = ({ children }) => {
     <UserContext.Provider
       value={{ userInfo: userInfo, setUserInfo: changeUserInfo }}
     >
+      {console.log('in authcontext', userInfo)}
       {children}
     </UserContext.Provider>
   );

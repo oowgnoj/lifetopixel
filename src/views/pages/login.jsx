@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { useUserInfo } from "context/authContext";
 import { requestLogin } from "../../lib/api/auth";
+import { getMe } from "lib/api/auth";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -17,10 +18,9 @@ const Login = () => {
   }, [userInfo]);
 
   const handleRequest = async () => {
-    const user = await requestLogin(email, password);
-    if (user) {
-      const { email, username } = user.user;
-      await setUserInfo({ email, username });
+    const isLoggedIn = await requestLogin(email, password);
+    if (isLoggedIn) {
+      await getMe()
       history.push("/");
     }
   };

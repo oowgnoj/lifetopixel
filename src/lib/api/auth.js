@@ -6,23 +6,22 @@ export async function getMe() {
   const res = await axios.get(`${DOMAIN_API}/me`, {
     headers: { "x-access-token": token },
   });
-  console.log(res);
+  console.log('getMe',res);
   return res.data;
 }
 
 export async function requestLogin(email, password) {
-  const data = await axios.post(`${DOMAIN_API}/login`, {
+  const {data} = await axios.post(`${DOMAIN_API}/login`, {
     email,
     password,
   });
-  console.log(data);
-
-  // if (user) {
-  //   localStorage.setItem("token", user.data.token);
-  //   return user.data;
-  // } else {
-  //   return false;
-  // }
+  const {token} =data; 
+  if (token) {
+    localStorage.setItem("token", token);
+    return true;
+  } else {
+    return false;
+  }
 }
 
 export async function requestLogout() {
