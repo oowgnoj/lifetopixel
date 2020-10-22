@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Question from "views/components/molecules/question";
 import GlobalStyle from "styles/globalstyle";
-import { useUserInfo } from "context/authContext";
+import { useUserInfo } from "context/auth";
 
 const Record = ({ index, question, handleText, handleNext, handlePrev }) => {
   const prev = "<";

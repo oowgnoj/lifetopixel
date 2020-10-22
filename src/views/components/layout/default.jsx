@@ -2,19 +2,27 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
-import { requestLogout } from "lib/api/auth";
+import { useAuth } from "context/auth";
+import { useEffect } from "react";
+import { getMe } from "lib/api/auth";
 
 const LayoutComponent = ({ children }) => {
+  const {authToken, setAuthToken} = useAuth();
+  async function requestMe(){
+    const data = await getMe();
+    console.log(data)
+  }
+  useEffect(()=> {
+    requestMe()
+  },[])
   return (
     <Layout>
-      <>
         <Heading>
-          {/* {userInfo.username} */}
+
           {/* <div style={{ color: "grey" }} onClick={handleLogout}> */}
           logout
           {/* </div> */}
         </Heading>
-      </>
       <Body>{children}</Body>
     </Layout>
   );
