@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 
-import Layout from "views/components/layout/default";
+import Layout from "views/components/layout";
 import Record from "views/components/organisms/record";
 import TypingAnimation from "views/components/molecules/typingAnimation";
 
@@ -63,12 +63,12 @@ const WriteDay = () => {
   };
   const handleRequest = async () => {
     const body = transformToRequstBody(answers);
-    const result = await postDay(body);
-    if (result.hasError) {
-      alert(result.data.response.data);
-    } else {
+    try {
+      await postDay(body);
       alert("성공적으로 제출되었습니다.");
       history.push("/");
+    } catch (error) {
+      alert(error.message);
     }
   };
 
