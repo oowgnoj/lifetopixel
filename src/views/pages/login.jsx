@@ -1,29 +1,27 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
-import { useUserInfo } from "context/authContext";
-import { requestLogin } from "../../lib/api/auth";
+import { Route, Redirect } from "react-router-dom";
 
-const Login = () => {
+import { useHistory } from "react-router-dom";
+import { requestLogin } from "lib/api/auth";
+import { useAuth } from "context/auth";
+import { getMe } from "lib/api/auth";
+
+const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { userInfo, setUserInfo } = useUserInfo();
+  const { userInfo, setAuthToken } = useAuth();
   const history = useHistory();
 
-  useEffect(() => {
-    if (userInfo) {
-      history.push("/");
-    }
-  }, [userInfo]);
-
   const handleRequest = async () => {
-    const user = await requestLogin(email, password);
-    if (user) {
-      const { email, username } = user.user;
-      await setUserInfo({ email, username });
-      history.push("/");
-    }
+    const { data } = await requestLogin(email, password);
+    setAuthToken(data.token);
+    history.push("/");
   };
+
+  if (userInfo.authToken && userInfo.me.email) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <Wrapper>

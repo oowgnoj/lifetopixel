@@ -2,17 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
-import Layout from "views/components/layout/default";
+import Layout from "views/components/layout";
 import DayPic from "assets/images/day.jpeg";
-import { useUserInfo } from "context/authContext";
+import { useAuth } from "context/auth";
 
 const Index = (props) => {
-  const { userInfo, setUserInfo } = useUserInfo();
-
-  if (!userInfo) {
-    return <Layout>waiting</Layout>;
-  }
-
+  const { userInfo, setAuthToken } = useAuth();
   return (
     <Layout>
       <Wrapper>
