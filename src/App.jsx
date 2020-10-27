@@ -6,9 +6,10 @@ import PrivateRoute from "privateRoute";
 import Index from "./views/pages";
 import Login from "./views/pages/login";
 import Day from "./views/pages/writeDay";
+import Note from "./views/pages/writeNote";
 import { AuthContext } from "context/auth";
 import { getMe } from "lib/api/auth";
-import { useHistory } from "react-router-dom";
+
 
 export default function App() {
   const existingTokens = localStorage.getItem("token");
@@ -40,6 +41,7 @@ export default function App() {
         <Route path="/login" component={Login} />
         <PrivateRoute exact path="/" component={Index} />
         <PrivateRoute exact path="/day" component={Day} />
+        <PrivateRoute exact path="/note" component={Note} />
       </Router>
     </AuthContext.Provider>
   );

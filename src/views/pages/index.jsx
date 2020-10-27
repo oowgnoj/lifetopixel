@@ -12,7 +12,10 @@ const Index = (props) => {
     <Layout>
       <Wrapper>
         <Link to="/day">
-          <button>작성하기</button>
+          <button>하루 작성하기</button>
+        </Link>
+        <Link to="/note">
+          <button>노트 작성하기</button>
         </Link>
       </Wrapper>
     </Layout>
