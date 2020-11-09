@@ -4,7 +4,9 @@ import styled from "styled-components";
 import Title from "views/components/atoms/title";
 import InputSentence from "views/components/atoms/inputShortSentence";
 import InputLongText from "views/components/atoms/inputLongSentence";
+import FieldSelect from "views/components/atoms/inputFieldSelect";
 import StarRating from "views/components/atoms/inputStartRating";
+import MultiSelect from "views/components/atoms/inputMultiSelect";
 
 const Question = ({ index, question, handleChange }) => {
   const { title, answer, type } = question;
@@ -28,6 +30,21 @@ const Question = ({ index, question, handleChange }) => {
       )}
       {type === "starRating" && (
         <StarRating index={index} handleChange={handleChange} answer={answer} />
+      )}
+
+      {type === "multiSelect" && (
+        <MultiSelect
+          index={index}
+          handleChange={handleChange}
+          answer={answer}
+        />
+      )}
+      {type === "fieldSelect" && (
+        <FieldSelect
+          index={index}
+          handleChange={handleChange}
+          answer={answer}
+        />
       )}
     </Wrapper>
   );
