@@ -15,6 +15,7 @@ const InputStarRating = ({ index, answer, handleChange }) => {
   useEffect(() => {
     setRating(generateScore(answer));
   }, []);
+
   const generateScore = (num) => {
     let def = [false, false, false, false, false];
     return def.map((el, index) => (index <= num ? true : false));

@@ -12,15 +12,13 @@ const loadData = async (inputValue) => {
 }
 
 const WithPromises = ({index, handleChange}) => {
-    // const handleChange = (newValue, actionMeta) => {
-    //     console.group('Value Changed');
-    //     console.log(newValue);
-    //     console.log(`action: ${actionMeta.action}`);
-    //     console.groupEnd();
-    //   };  
+    const handleAdd = (newValue) => {
+        console.log('here is new value!!!', newValue);
+        handleChange(index, newValue)
+      };  
     return (
       <AsyncCreatableSelect
-        onChange={(newVal)=>handleChange(index, newVal)}
+        onChange={(newValue)=>handleAdd(newValue)}
         defaultOptions
         isMulti
         loadOptions={loadData}

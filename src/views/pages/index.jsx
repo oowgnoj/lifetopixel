@@ -17,6 +17,9 @@ const Index = (props) => {
         <Link to="/note">
           <button>노트 작성하기</button>
         </Link>
+        <Link to="/field">
+          <button>필드 작성하기</button>
+        </Link>
       </Wrapper>
     </Layout>
   );

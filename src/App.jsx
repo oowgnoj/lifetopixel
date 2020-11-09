@@ -7,9 +7,9 @@ import Index from "./views/pages";
 import Login from "./views/pages/login";
 import Day from "./views/pages/writeDay";
 import Note from "./views/pages/writeNote";
+import Field from "./views/pages/writeField";
 import { AuthContext } from "context/auth";
 import { getMe } from "lib/api/auth";
-
 
 export default function App() {
   const existingTokens = localStorage.getItem("token");
@@ -42,6 +42,7 @@ export default function App() {
         <PrivateRoute exact path="/" component={Index} />
         <PrivateRoute exact path="/day" component={Day} />
         <PrivateRoute exact path="/note" component={Note} />
+        <PrivateRoute exact path="/field" component={Field} />
       </Router>
     </AuthContext.Provider>
   );
