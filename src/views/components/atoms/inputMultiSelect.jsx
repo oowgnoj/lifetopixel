@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import AsyncCreatableSelect from 'react-select/async-creatable';
 import {requestTag} from 'lib/api/tag'
 
@@ -13,7 +12,6 @@ const loadData = async (inputValue) => {
 
 const WithPromises = ({index, handleChange}) => {
     const handleAdd = (newValue) => {
-        console.log('here is new value!!!', newValue);
         handleChange(index, newValue)
       };  
     return (
