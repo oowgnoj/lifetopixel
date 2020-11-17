@@ -4,8 +4,6 @@ import { useHistory } from "react-router-dom";
 
 import Layout from "views/components/layout";
 import Record from "views/components/organisms/record";
-import TypingAnimation from "views/components/molecules/typingAnimation";
-
 import { postNote } from "lib/api/note";
 import { transformToRequstBody } from "lib/common/helper";
 
@@ -69,11 +67,11 @@ const WriteDay = () => {
     setAnswer(newAnswer);
   };
   const handleRequest = async () => {
-    console.log(answers);
     const body = transformToRequstBody(answers);
     try {
       await postNote(body);
       alert("성공적으로 제출되었습니다.");
+      setAnswer(questions)
       history.push("/");
     } catch (error) {
       alert(error.message);

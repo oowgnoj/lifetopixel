@@ -67,6 +67,7 @@ const WriteDay = () => {
       await postDay(body);
       alert("성공적으로 제출되었습니다.");
       history.push("/");
+      setAnswer(questions);
     } catch (error) {
       alert(error.message);
     }

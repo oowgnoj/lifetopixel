@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { useHistory } from "react-router-dom";
 import { useAuth } from "context/auth";
-import { requestLogout } from "lib/api/auth";
 import { Link } from "react-router-dom";
 
 
@@ -22,9 +20,6 @@ const LayoutComponent = ({ children }) => {
         </Link>
         <Link to="/note">
           <button>노트</button>
-        </Link>
-        <Link to="/day">
-        <button>하루 작성하기</button>
         </Link>
         <Link to="/day">
         <button>하루 작성하기</button>
